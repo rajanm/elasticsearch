@@ -1,5 +1,5 @@
 [[query-dsl-dis-max-query]]
-== Dis Max Query
+=== Dis Max Query
 
 A query that generates the union of documents produced by its
 subqueries, and that scores each document with the maximum score for
@@ -27,18 +27,22 @@ This query maps to Lucene `DisjunctionMaxQuery`.
 
 [source,js]
 --------------------------------------------------
+GET /_search
 {
-    "dis_max" : {
-        "tie_breaker" : 0.7,
-        "boost" : 1.2,
-        "queries" : [
-            {
-                "term" : { "age" : 34 }
-            },
-            {
-                "term" : { "age" : 35 }
-            }
-        ]
+    "query": {
+        "dis_max" : {
+            "tie_breaker" : 0.7,
+            "boost" : 1.2,
+            "queries" : [
+                {
+                    "term" : { "age" : 34 }
+                },
+                {
+                    "term" : { "age" : 35 }
+                }
+            ]
+        }
     }
 }    
 --------------------------------------------------
+// CONSOLE
